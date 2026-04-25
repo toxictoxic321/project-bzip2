@@ -19,18 +19,33 @@ The program first reads the `config.ini` file to set the rules. Then, it runs th
 
 ## Build Instructions
 
+## Step-by-Step Setup and Execution
+
 **For Windows (Visual Studio):**
-1. Download the code and open the folder in Visual Studio.
-2. Make sure all `.c` files in the `src/` folder are included in your project.
-3. Build the solution and run the program (Press F5).
+1. **Create a Project:** Open Visual Studio and create a new Empty Project.
+2. **Add Source Code:** Copy all the `.c` files (including `main.c`) from the `src/` folder into your Visual Studio "Source Files".
+3. **Add Headers:** Copy `project.h` from the `include/` folder into your "Header Files".
+4. **Add Configuration:** Copy the `config.ini` file into your main project directory.
+5. **Prepare the Test File:** Take any text file you want to compress, rename it to exactly `input.txt`, and place it in the main project directory alongside your code.
+6. **Run:** Build the solution and run the program (Press F5). `main.c` will automatically execute.
 
 **For Linux (GCC Terminal):**
-Open your terminal in the project folder and run this command to compile all the C files together:
-`gcc -I./include src/*.c -o bzip2_project`
-Then run it with:
-`./bzip2_project`
+1. **Open Terminal:** Open your terminal and navigate into the main downloaded project folder using the `cd` command (e.g., `cd ~/Downloads/project-bzip2`).
+2. **Prepare the Test File:** Take any text file you want to compress, rename it to exactly `input.txt`, and place it in the main project directory (it should be sitting right next to your `config.ini` file).
+3. **Compile the Code:** Run this exact command to compile the entire project into an executable program:
+   `gcc -I./include src/*.c -o bzip2_project`
+   *(Note: The `-I./include` tells the compiler where to find `project.h`, and `src/*.c` automatically grabs all your source code files at once).*
+4. **Execute the Program:** Run the newly created application by typing:
+   `./bzip2_project`
 
 ---
+
+## What the Program Will Do
+Once the program is running, the automated pipeline takes over:
+1. It prints the active configuration (block size, thresholds) and progress to the terminal.
+2. It generates a compressed binary file named `compressed`.
+3. It instantly decompresses that binary to create `restored_output.txt` (used to verify 100% data integrity with the original file).
+4. It logs the final metrics (file size, compression ratio, and time taken) by adding a new line to `results.csv`.
 
 ## Usage Examples
 To run the compression, you must follow these simple steps:
